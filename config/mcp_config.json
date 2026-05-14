@@ -1,0 +1,72 @@
+{
+  "version": "1.1",
+  "mcp_servers": {
+    "email": {
+      "enabled": true,
+      "module": "../mcp_servers/email_server",
+      "config": {
+        "host": "localhost",
+        "port": 8001,
+        "providers": ["gmail", "outlook"]
+      }
+    },
+    "browser": {
+      "enabled": true,
+      "module": "../mcp_servers/browser_server",
+      "config": {
+        "host": "localhost",
+        "port": 8002,
+        "headless": true,
+        "timeout": 30
+      }
+    },
+    "payment": {
+      "enabled": true,
+      "module": "../mcp_servers/payment_server",
+      "config": {
+        "host": "localhost",
+        "port": 8003,
+        "providers": ["stripe", "paypal"]
+      }
+    },
+    "social": {
+      "enabled": true,
+      "module": "../mcp_servers/social_server",
+      "config": {
+        "host": "localhost",
+        "port": 8004,
+        "platforms": ["twitter", "linkedin", "facebook", "instagram"]
+      }
+    },
+    "odoo": {
+      "enabled": false,
+      "module": "../mcp_servers/odoo_server",
+      "config": {
+        "url": "http://localhost:8069",
+        "db": "odoo_db",
+        "username": "admin",
+        "password": "admin"
+      }
+    },
+    "slack": {
+      "enabled": false,
+      "module": "slack_mcp",
+      "config": {
+        "host": "localhost",
+        "port": 8006
+      }
+    }
+  },
+  "global_config": {
+    "enable_all": false,
+    "timeout": 30,
+    "retry_policy": {
+      "max_retries": 3,
+      "backoff_multiplier": 1.5
+    },
+    "logging": {
+      "level": "INFO",
+      "format": "json"
+    }
+  }
+}

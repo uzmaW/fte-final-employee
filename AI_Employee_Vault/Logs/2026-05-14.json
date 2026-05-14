@@ -1,0 +1,59 @@
+{
+  "date": "2026-05-14",
+  "timezone": "UTC",
+  "events": [
+    {
+      "timestamp": "2026-05-14T07:50:22.836452Z",
+      "event_type": "whatsapp_processed",
+      "agent": "system",
+      "task_id": "WHATSAPP_20260514_125022_SM_TEST1",
+      "details": {
+        "priority": "critical",
+        "from": "+1234567890"
+      }
+    },
+    {
+      "timestamp": "2026-05-14T07:54:28.196707Z",
+      "event_type": "whatsapp_processed",
+      "agent": "system",
+      "task_id": "WHATSAPP_20260514_125428_SM_TEST1",
+      "details": {
+        "priority": "critical",
+        "from": "+1234567890"
+      }
+    },
+    {
+      "timestamp": "2026-05-14T07:59:16.477285Z",
+      "event_type": "task_completed",
+      "agent": "system",
+      "task_id": "TEST_20260514_125916",
+      "details": {
+        "result": "success",
+        "iterations": 0
+      }
+    },
+    {
+      "timestamp": "2026-05-14T07:59:18.511645Z",
+      "event_type": "whatsapp_processed",
+      "agent": "system",
+      "task_id": "WHATSAPP_20260514_125918_SM_TEST1",
+      "details": {
+        "priority": "critical",
+        "from": "+1234567890"
+      }
+    },
+    {
+      "timestamp": "2026-05-14T08:04:09.570605Z",
+      "event_type": "approval_request",
+      "agent": "system",
+      "task_id": "TEST_FLOW",
+      "details": {
+        "action_type": "payment",
+        "risk_level": "high",
+        "amount": 500,
+        "status": "pending",
+        "auto_approved": false
+      }
+    }
+  ]
+}

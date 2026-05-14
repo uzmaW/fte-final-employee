@@ -1,0 +1,53 @@
+{
+  "id": "cloud-agent",
+  "name": "Cloud AI Employee",
+  "description": "Cloud-based agent for external API integrations, drafting, and scheduled tasks",
+  "type": "cloud",
+  "capabilities": [
+    "email_processing",
+    "whatsapp_messaging",
+    "social_media_posting",
+    "linkedin_posting",
+    "accounting_drafts",
+    "content_scheduling"
+  ],
+  "enabled": true,
+  "settings": {
+    "polling_interval": 60,
+    "max_concurrent_tasks": 3,
+    "retry_policy": {
+      "max_retries": 3,
+      "backoff_multiplier": 1.5,
+      "initial_delay": 1
+    }
+  },
+  "watchers": [],
+  "delegation": {
+    "local_agent_id": "local-agent",
+    "sync_method": "git",
+    "secret_domains": ["payments", "banking", "whatsapp_session", "secrets"]
+  },
+  "integrations": [
+    {
+      "type": "gmail",
+      "provider": "google",
+      "enabled": false
+    },
+    {
+      "type": "whatsapp",
+      "provider": "twilio",
+      "enabled": false
+    },
+    {
+      "type": "stripe",
+      "provider": "stripe",
+      "enabled": false
+    }
+  ],
+  "skills": [
+    "email_processor",
+    "linkedin_poster",
+    "social_media_poster",
+    "transaction_analyzer"
+  ]
+}

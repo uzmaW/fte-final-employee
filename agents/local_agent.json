@@ -1,0 +1,71 @@
+{
+  "id": "local-agent",
+  "name": "Local AI Employee",
+  "description": "Local AI agent running on the machine with direct access to vault and file system",
+  "type": "local",
+  "capabilities": [
+    "vault_operations",
+    "file_watching",
+    "workflow_approval",
+    "transaction_analysis",
+    "email_processing",
+    "whatsapp_messaging",
+    "whatsapp_web_playwright",
+    "social_media_posting",
+    "linkedin_posting"
+  ],
+  "enabled": true,
+  "settings": {
+    "vault_path": "AI_Employee_Vault",
+    "polling_interval": 30,
+    "max_concurrent_tasks": 5,
+    "retry_policy": {
+      "max_retries": 3,
+      "backoff_multiplier": 1.5,
+      "initial_delay": 1
+    }
+  },
+  "watchers": [
+    {
+      "type": "filesystem",
+      "paths": ["AI_Employee_Vault/Needs_Action", "AI_Employee_Vault/In_Progress"],
+      "enabled": true
+    },
+    {
+      "type": "gmail",
+      "enabled": true,
+      "poll_interval": 300
+    },
+    {
+      "type": "whatsapp",
+      "enabled": true,
+      "poll_interval": 60
+    },
+    {
+      "type": "whatsapp_web_playwright",
+      "enabled": true,
+      "poll_interval": 60,
+      "headless": true
+    },
+    {
+      "type": "linkedin",
+      "enabled": true,
+      "poll_interval": 900
+    },
+    {
+      "type": "social_media",
+      "enabled": true,
+      "poll_interval": 1800
+    }
+  ],
+  "skills": [
+    "approval_manager",
+    "vault_operations",
+    "orchestration_loop",
+    "transaction_analyzer",
+    "email_processor",
+    "whatsapp_handler",
+    "linkedin_poster",
+    "social_media_poster"
+  ]
+}

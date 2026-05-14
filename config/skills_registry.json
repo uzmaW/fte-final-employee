@@ -1,0 +1,175 @@
+{
+  "version": "1.1",
+  "skills": {
+    "communication": {
+      "email_processor": {
+        "path": "../skills/communication/email_processor",
+        "description": "Processes and manages email communications",
+        "enabled": true,
+        "dependencies": ["vault_operations"],
+        "config_required": ["gmail_client_id", "gmail_client_secret", "gmail_refresh_token"]
+      },
+      "whatsapp_handler": {
+        "path": "../skills/communication/whatsapp_handler",
+        "description": "Handles WhatsApp messaging via Twilio",
+        "enabled": true,
+        "dependencies": ["vault_operations"],
+        "config_required": ["twilio_account_sid", "twilio_auth_token", "twilio_phone_number"]
+      },
+      "whatsapp_web": {
+        "path": "../orchestrator/whatsapp_watcher_playwright",
+        "description": "Playwright-based WhatsApp Web automation for monitoring and response",
+        "enabled": true,
+        "dependencies": ["vault_operations"],
+        "config_required": ["whatsapp_web_session_dir"]
+      },
+      "linkedin_poster": {
+        "path": "../skills/communication/linkedin_poster",
+        "description": "Post business updates to LinkedIn for lead generation",
+        "enabled": true,
+        "dependencies": ["vault_operations", "approval_workflow"],
+        "config_required": ["linkedin_client_id", "linkedin_client_secret", "linkedin_access_token"]
+      },
+      "facebook_poster": {
+        "path": "../skills/communication/facebook_instagram_poster",
+        "description": "Post content to Facebook Pages",
+        "enabled": true,
+        "dependencies": ["vault_operations", "approval_workflow"],
+        "config_required": ["facebook_page_id", "facebook_access_token"]
+      },
+      "instagram_poster": {
+        "path": "../skills/communication/facebook_instagram_poster",
+        "description": "Post content to Instagram Business accounts",
+        "enabled": true,
+        "dependencies": ["vault_operations", "approval_workflow"],
+        "config_required": ["instagram_user_id", "instagram_access_token"]
+      },
+      "twitter_x_poster": {
+        "path": "../skills/communication/twitter_x_poster",
+        "description": "Post tweets and threads to Twitter (X)",
+        "enabled": true,
+        "dependencies": ["vault_operations", "approval_workflow"],
+        "config_required": ["twitter_api_key", "twitter_api_secret", "twitter_access_token", "twitter_access_token_secret"]
+      },
+      "social_media_poster": {
+        "path": "../skills/communication/social_media_poster",
+        "description": "Unified social media posting coordinator",
+        "enabled": true,
+        "dependencies": ["vault_operations"],
+        "config_required": []
+      }
+    },
+    "finance": {
+      "transaction_analyzer": {
+        "path": "../skills/finance/transaction_analyzer",
+        "description": "Analyzes financial transactions and generates audit reports",
+        "enabled": true,
+        "dependencies": ["vault_operations"],
+        "config_required": []
+      },
+      "invoice_generator": {
+        "path": "../skills/finance/invoice_generator",
+        "description": "Generates invoices from transaction data",
+        "enabled": false,
+        "dependencies": ["transaction_analyzer", "vault_operations"],
+        "config_required": []
+      },
+      "expense_categorizer": {
+        "path": "../skills/finance/expense_categorizer",
+        "description": "Categorizes expenses for reporting",
+        "enabled": false,
+        "dependencies": ["transaction_analyzer"],
+        "config_required": []
+      }
+    },
+    "project_management": {
+      "task_planner": {
+        "path": "../skills/project_management/task_planner",
+        "description": "Plans and schedules tasks",
+        "enabled": false,
+        "dependencies": ["vault_operations"],
+        "config_required": []
+      },
+      "deadline_tracker": {
+        "path": "../skills/project_management/deadline_tracker",
+        "description": "Tracks project deadlines and milestones",
+        "enabled": false,
+        "dependencies": ["vault_operations"],
+        "config_required": []
+      },
+      "progress_reporter": {
+        "path": "../skills/project_management/progress_reporter",
+        "description": "Generates progress reports",
+        "enabled": false,
+        "dependencies": ["vault_operations"],
+        "config_required": []
+      }
+    },
+    "system": {
+      "approval_manager": {
+        "path": "../skills/system/approval_manager",
+        "description": "Manages workflow approvals and decisions",
+        "enabled": true,
+        "dependencies": ["vault_operations"],
+        "config_required": []
+      },
+      "vault_operations": {
+        "path": "../skills/system/vault_operations",
+        "description": "Core vault (Obsidian) operations",
+        "enabled": true,
+        "dependencies": [],
+        "config_required": []
+      },
+      "orchestration_loop": {
+        "path": "../skills/system/orchestration_loop",
+        "description": "Main orchestration and decision loop",
+        "enabled": true,
+        "dependencies": ["vault_operations", "approval_manager"],
+        "config_required": []
+      },
+      "audit_logger": {
+        "path": "../skills/system/audit_logger",
+        "description": "Logs all system actions for audit trail",
+        "enabled": true,
+        "dependencies": ["vault_operations"],
+        "config_required": []
+      },
+      "platinum_delegation": {
+        "path": "../orchestrator/platinum_delegation",
+        "description": "Cloud-Local delegation for always-on AI employee",
+        "enabled": true,
+        "dependencies": ["vault_operations", "orchestration_loop"],
+        "config_required": ["cloud_agent_endpoint"]
+      },
+      "a2a_protocol": {
+        "path": "../orchestrator/a2a_protocol",
+        "description": "Agent-to-Agent communication protocol",
+        "enabled": true,
+        "dependencies": ["vault_operations"],
+        "config_required": ["a2a_shared_secret"]
+      }
+    },
+    "odoo_operations": {
+      "accounting_manager": {
+        "path": "../skills/finance/accounting_manager",
+        "description": "Manages Odoo accounting operations, invoices, and financial records",
+        "enabled": false,
+        "dependencies": ["vault_operations", "transaction_analyzer"],
+        "config_required": ["ODOO_URL", "ODOO_DB", "ODOO_USER", "ODOO_PASSWORD"]
+      },
+      "odoo_payment_reconciler": {
+        "path": "../skills/finance/odoo_payment_reconciler",
+        "description": "Reconciles payments in Odoo with financial transactions",
+        "enabled": false,
+        "dependencies": ["accounting_manager"],
+        "config_required": []
+      }
+    }
+  },
+  "metadata": {
+    "created_at": "2026-02-08",
+    "last_updated": "2026-02-08",
+    "total_skills": 16,
+    "enabled_skills": 12
+  }
+}

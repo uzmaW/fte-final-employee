@@ -1,0 +1,48 @@
+{
+  "id": "orchestrator-agent",
+  "name": "Orchestrator Agent",
+  "description": "Central orchestrator agent that coordinates between local and cloud agents",
+  "type": "orchestrator",
+  "capabilities": [
+    "agent_coordination",
+    "workflow_management",
+    "task_distribution",
+    "monitoring"
+  ],
+  "enabled": true,
+  "settings": {
+    "polling_interval": 10,
+    "health_check_interval": 60,
+    "max_queue_size": 1000,
+    "task_timeout": 3600
+  },
+  "managed_agents": [
+    "local-agent",
+    "cloud-agent"
+  ],
+  "workflow_config": {
+    "approval_required_for": [
+      "financial_transactions",
+      "external_communications",
+      "high_priority_tasks"
+    ],
+    "escalation_levels": [
+      "warning",
+      "critical",
+      "emergency"
+    ]
+  },
+  "monitoring": {
+    "enabled": true,
+    "metrics_collection_interval": 60,
+    "alerting": {
+      "enabled": true,
+      "channels": ["logs", "vault"]
+    }
+  },
+  "skills": [
+    "vault_operations",
+    "orchestration_loop",
+    "approval_manager"
+  ]
+}

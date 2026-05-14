@@ -1,0 +1,100 @@
+---
+# Agent Configuration File
+# Defines agent instances and their behavior
+
+agents:
+  local:
+    agent_file: ../agents/local_agent.json
+    auto_start: true
+    restart_on_failure: true
+    max_restarts: 3
+    watchers:
+      - gmail
+      - whatsapp_web_playwright
+      - filesystem
+      - linkedin
+      - social_media
+    features:
+      - vault_operations
+      - approval_workflow
+      - email_processing
+      - whatsapp_messaging
+      - whatsapp_web_playwright
+      - social_media_posting
+      - linkedin_posting
+
+  cloud:
+    agent_file: ../agents/cloud_agent.json
+    auto_start: false
+    restart_on_failure: true
+    max_restarts: 3
+    watchers:
+      - social_media
+    features:
+      - vault_operations
+      - social_media_posting
+      - email_processing
+
+  orchestrator:
+    agent_file: ../agents/orchestrator_agent.json
+    auto_start: true
+    restart_on_failure: true
+    max_restarts: 5
+    features:
+      - vault_operations
+      - orchestration_loop
+
+# Global settings
+global:
+  log_level: INFO
+  timezone: UTC
+  enable_metrics: true
+  enable_profiling: false
+  
+# Coordinator settings
+coordinator:
+  polling_interval: 10
+  health_check_interval: 60
+  max_concurrent_workflows: 5
+  task_queue_size: 1000
+
+# Failure handling
+failure_handling:
+  retry_strategy: exponential_backoff
+  max_retries: 3
+  initial_backoff: 1
+  max_backoff: 60
+  retry_on_status_codes:
+    - 429
+    - 503
+    - 504
+
+# Logging
+logging:
+  console:
+    enabled: true
+    level: INFO
+  file:
+    enabled: true
+    level: DEBUG
+    path: ../AI_Employee_Vault/Logs
+    rotation: daily
+    retention_days: 30
+
+# Feature flags
+features:
+  vault_operations: true
+  approval_workflow: true
+  financial_auditing: true
+  email_processing: true
+  whatsapp_messaging: true
+  whatsapp_web_playwright: true
+  social_media_posting: true
+  linkedin_posting: true
+  facebook_posting: true
+  instagram_posting: true
+  twitter_x_posting: true
+odoo_accounting: true
+   odoo_payment_reconciliation: true
+   platinum_delegation: true
+   a2a_protocol: true
